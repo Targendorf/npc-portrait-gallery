@@ -1,0 +1,155 @@
+#npc-portrait-gallery .window-content {
+  background: #191c25;
+  color: #f1ebdf;
+  min-height: 0;
+  padding: 0;
+}
+
+.npc-gallery-content {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 12px;
+  min-height: 0;
+  padding: 18px;
+}
+
+.npc-gallery-filters, .npc-gallery-manage {
+  display: grid;
+  grid-template-columns: minmax(135px, 2fr) repeat(3, minmax(85px, 1fr));
+  gap: 8px;
+}
+
+.npc-gallery-manage { grid-template-columns: minmax(140px, 1fr) auto; }
+.npc-gallery-editor label { display: grid; gap: 4px; margin-bottom: 10px; }
+.npc-gallery-editor { max-height: 65vh; overflow-y: auto; }
+.npc-facet-editor { margin: 0 0 8px; }
+.npc-facet-rows { display: grid; gap: 4px; margin-bottom: 4px; }
+.npc-facet-row { display: grid; grid-template-columns: minmax(0, 1fr) 30px; gap: 5px; }
+.npc-facet-editor > button { width: 30px; }
+.npc-gallery-status { color: #c7b99a; margin: 0; }
+.npc-gallery-toolbar, .npc-gallery-toolbar label { display: flex; align-items: center; gap: 8px; }
+.npc-gallery-toolbar { justify-content: space-between; }
+
+.npc-gallery-content :is(input, select, button) {
+  background: #2a2e3b;
+  border: 1px solid #525064;
+  color: #f1ebdf;
+  min-width: 0;
+}
+
+.npc-gallery-content button:hover { border-color: #dcc18a; }
+
+.npc-gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, var(--npc-card-width, 120px)), 1fr));
+  grid-auto-rows: max-content;
+  min-height: 0;
+  align-content: start;
+  gap: 8px;
+  overflow: auto;
+  scrollbar-gutter: stable;
+  padding: 2px 6px 6px 2px;
+}
+.npc-gallery-grid[data-size="medium"] { --npc-card-width: 144px; }
+.npc-gallery-grid[data-size="large"] { --npc-card-width: 180px; }
+
+.npc-gallery-card {
+  min-width: 0;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--npc-card-outline, #59516b);
+  border-radius: 8px;
+  overflow: hidden;
+  background: #262938;
+  text-align: center;
+}
+
+.npc-gallery-favorite {
+  position: absolute;
+  top: 4px;
+  left: 5px;
+  color: #ffda79;
+  font-size: 14px;
+  line-height: 1;
+  text-shadow: 0 1px 3px #000, 0 0 3px #000;
+  pointer-events: none;
+}
+
+.npc-gallery-card > img {
+  width: 100%;
+  height: auto;
+  flex-shrink: 0;
+  aspect-ratio: 1;
+  object-fit: cover;
+  object-position: center 25%;
+  background: radial-gradient(ellipse at top, #615679, #33384b 75%);
+  border: 0;
+  border-radius: 0;
+}
+
+.npc-gallery-card > strong {
+  display: grid;
+  align-content: center;
+  flex-shrink: 0;
+  box-sizing: content-box;
+  min-height: 2.5em;
+  padding: 4px 5px;
+  line-height: 1.25;
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+.npc-gallery-card-details > span {
+  min-width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.npc-gallery-grid[data-size="small"] .npc-gallery-card strong { font-size: 12px; }
+.npc-gallery-card-details {
+  display: grid;
+  flex-shrink: 0;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 2px;
+  padding: 0 5px 6px;
+  color: #d2c3a4;
+  font-size: 0.75rem;
+  line-height: 1.15;
+}
+.npc-gallery-grid[data-size="small"] .npc-gallery-card-details { font-size: 0.6875rem; }
+
+#npc-portrait-gallery-pins { position: fixed; inset: 0; z-index: 69; pointer-events: none; }
+.npc-gallery-pin {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  pointer-events: auto;
+  background: #202332;
+  border: 1px solid #b79c70;
+  border-radius: 7px;
+  box-shadow: 0 2px 8px #0008;
+  color: #fff2d9;
+}
+
+.npc-gallery-pin button {
+  width: auto;
+  min-height: 30px;
+  padding: 0 6px;
+  background: transparent;
+  color: inherit;
+  border: 0;
+}
+
+.npc-gallery-pin .npc-pin-name { display: flex; align-items: center; gap: 6px; max-width: 250px; }
+.npc-gallery-pin span.npc-pin-name { padding: 0 6px; }
+.npc-pin-row { display: flex; align-items: center; gap: 3px; }
+.npc-pin-row + .npc-pin-row { border-top: 1px solid #59516b; }
+.npc-pin-row .npc-pin-name { flex: 1; }
+.npc-gallery-pin .npc-pin-group-name { width: 100%; color: #e2c99a; overflow-wrap: anywhere; }
+.npc-gallery-pin img { width: 25px; height: 25px; object-fit: cover; border: 0; border-radius: 4px; }
+.npc-pin-handle { cursor: grab; touch-action: none; }
+
+@media (max-width: 600px) {
+  .npc-gallery-filters { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
